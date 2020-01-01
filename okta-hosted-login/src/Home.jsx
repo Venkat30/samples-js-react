@@ -32,6 +32,7 @@ export default withAuth(class Home extends Component {
   }
 
   async login() {
+    debugger;
     this.props.auth.login('/');
   }
 

@@ -1,3 +1,4 @@
+/* eslint-disable linebreak-style */
 /* global __dirname */
 /* eslint-disable import/no-extraneous-dependencies */
 
@@ -5,7 +6,10 @@
 const path = require('path');
 const dotenv = require('dotenv');
 const fs = require('fs');
+const dotenvExpand = require('dotenv-expand');
 
+const myEnv = dotenv.config();
+dotenvExpand(myEnv);
 // Read environment variables from "testenv". Override environment vars if they are already set.
 const TESTENV = path.resolve(__dirname, '..', 'testenv');
 if (fs.existsSync(TESTENV)) {
@@ -25,7 +29,7 @@ const env = {};
 [
   'ISSUER',
   'CLIENT_ID',
-  'OKTA_TESTING_DISABLEHTTPSCHECK'
+  'OKTA_TESTING_DISABLEHTTPSCHECK',
 ].forEach((key) => {
   if (!process.env[key]) {
     throw new Error(`Environment variable ${key} must be set. See README.md`);
